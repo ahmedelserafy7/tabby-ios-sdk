@@ -37,7 +37,7 @@ public struct TabbyProductPageSnippet: View {
   
   public var body: some View {
     let isRTL = direction == .rightToLeft
-    guard let language = Locale.current.languageCode else { return }
+    guard let language = Locale.current.languageCode else { return self.body }
     let direction = Locale.characterDirection(forLanguage: language)
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
     let textNode1 = kind == .common ? String(format: direction == .rightToLeft ? "snippetArTitle1".localized : "snippetTitle1".localized) : String(format: "snippetTitle1EG".localized)
