@@ -31,7 +31,7 @@ public struct TabbyProductPageSnippet: View {
   var learnMore = ""
   var urls: (String, String) = ("", "")
   
-  public init(amount: Double, currency: Currency, snippetTitle1: String, snippetTitle1EG: String, snippetTitle2: String, snippetTitle2EG: String, learnMore: String, preferCurrencyInArabic: Bool? = nil) {
+  public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil) {
     self.amount = amount
     self.currency = currency
     self.snippetTitle1 = snippetTitle1
