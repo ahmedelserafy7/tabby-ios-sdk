@@ -24,11 +24,21 @@ public struct TabbyProductPageSnippet: View {
   let amount: Double
   let currency: Currency
   let withCurrencyInArabic: Bool
+  var snippetTitle1 = ""
+  var snippetTitle1EG = ""
+  var snippetTitle2 = ""
+  var snippetTitle2EG = ""
+  var learnMore = ""
   var urls: (String, String) = ("", "")
   
-  public init(amount: Double, currency: Currency, snippetTitle1: String, snippetTitle1EG: String, snippetTitle2EG: String, learnMore: String, preferCurrencyInArabic: Bool? = nil) {
+  public init(amount: Double, currency: Currency, snippetTitle1: String, snippetTitle1EG: String, snippetTitle2: String, snippetTitle2EG: String, learnMore: String, preferCurrencyInArabic: Bool? = nil) {
     self.amount = amount
     self.currency = currency
+    self.snippetTitle1 = snippetTitle1
+    self.snippetTitle1EG = snippetTitle1EG
+    self.snippetTitle2 = snippetTitle2
+    self.snippetTitle2EG = snippetTitle2EG
+    self.learnMore = learnMore
     self.withCurrencyInArabic = preferCurrencyInArabic ?? false
     let urlEn =  "\(webViewUrls[.en]!)?price=\(amount)&currency=\(currency.rawValue)"
     let urlAr =  "\(webViewUrls[.ar]!)?price=\(amount)&currency=\(currency.rawValue)"
@@ -38,11 +48,9 @@ public struct TabbyProductPageSnippet: View {
   public var body: some View {
     let isRTL = direction == .rightToLeft
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
-    let localized = NSLocalizedString("language", comment: "")
-    let preferredLanguage = NSLocale.preferredLanguages[0]
     let textNode1 = kind == .common ? String(format: snippetTitle1) : String(format: snippetTitle1EG)
     let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
-    let textNode3 = kind == .common ? String(format: "snippetTitle2".localized) : String(format: snippetTitle2EG)
+    let textNode3 = kind == .common ? String(format: snippetTitle2) : String(format: snippetTitle2EG)
     
     let learnMoreText = String(format: learnMore)
     
