@@ -32,7 +32,7 @@ public struct TabbyProductPageSnippet: View {
   var isRTL = Bool()
   var urls: (String, String) = ("", "")
   
-  public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool? = nil) {
+  public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool = true) {
     self.amount = amount
     self.currency = currency
     self.snippetTitle1 = snippetTitle1 ?? ""
@@ -40,7 +40,7 @@ public struct TabbyProductPageSnippet: View {
     self.snippetTitle2 = snippetTitle2 ?? ""
     self.snippetTitle2EG = snippetTitle2EG ?? ""
     self.learnMore = learnMore ?? ""
-    self.isRTL = isRTL ?? ""
+    self.isRTL = isRTL
     self.withCurrencyInArabic = preferCurrencyInArabic ?? false
     let urlEn =  "\(webViewUrls[.en]!)?price=\(amount)&currency=\(currency.rawValue)"
     let urlAr =  "\(webViewUrls[.ar]!)?price=\(amount)&currency=\(currency.rawValue)"
