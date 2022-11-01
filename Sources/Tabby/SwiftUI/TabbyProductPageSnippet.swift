@@ -29,7 +29,7 @@ public struct TabbyProductPageSnippet: View {
   var snippetTitle2 = ""
   var snippetTitle2EG = ""
   var learnMore = ""
-  var isRTL: Bool? = nil
+  var isRTL = Bool()
   var urls: (String, String) = ("", "")
   
   public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool? = nil) {
