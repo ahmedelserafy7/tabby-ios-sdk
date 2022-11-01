@@ -38,7 +38,8 @@ public struct TabbyProductPageSnippet: View {
   public var body: some View {
     let isRTL = direction == .rightToLeft
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
-    let textNode1 = kind == .common ? String(format: withCurrencyInArabic ? "snippetArTitle1".localized : "snippetTitle1".localized) : String(format: "snippetTitle1EG".localized)
+    print("\(Lang), \(isRTL)")
+    let textNode1 = kind == .common ? String(format: preferCurrencyInArabic ? "snippetArTitle1".localized : "snippetTitle1".localized) : String(format: "snippetTitle1EG".localized)
     let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
     let textNode3 = kind == .common ? String(format: "snippetTitle2".localized) : String(format: "snippetTitle2EG".localized)
     
