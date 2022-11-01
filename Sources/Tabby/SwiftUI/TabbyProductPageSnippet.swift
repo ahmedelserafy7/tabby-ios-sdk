@@ -34,11 +34,11 @@ public struct TabbyProductPageSnippet: View {
   public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil) {
     self.amount = amount
     self.currency = currency
-    self.snippetTitle1 = snippetTitle1
-    self.snippetTitle1EG = snippetTitle1EG
-    self.snippetTitle2 = snippetTitle2
-    self.snippetTitle2EG = snippetTitle2EG
-    self.learnMore = learnMore
+    self.snippetTitle1 = snippetTitle1 ?? ""
+    self.snippetTitle1EG = snippetTitle1EG ?? ""
+    self.snippetTitle2 = snippetTitle2 ?? ""
+    self.snippetTitle2EG = snippetTitle2EG ?? ""
+    self.learnMore = learnMore ?? ""
     self.withCurrencyInArabic = preferCurrencyInArabic ?? false
     let urlEn =  "\(webViewUrls[.en]!)?price=\(amount)&currency=\(currency.rawValue)"
     let urlAr =  "\(webViewUrls[.ar]!)?price=\(amount)&currency=\(currency.rawValue)"
