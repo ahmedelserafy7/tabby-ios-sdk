@@ -26,7 +26,7 @@ public struct TabbyProductPageSnippet: View {
   let withCurrencyInArabic: Bool
   var urls: (String, String) = ("", "")
   
-  public init(amount: Double, currency: Currency, preferCurrencyInArabic: Bool? = nil) {
+  public init(amount: Double, currency: Currency, snippetTitle1: String, snippetTitle1EG: String, snippetTitle2EG: String, learnMore: String, preferCurrencyInArabic: Bool? = nil) {
     self.amount = amount
     self.currency = currency
     self.withCurrencyInArabic = preferCurrencyInArabic ?? false
@@ -40,12 +40,11 @@ public struct TabbyProductPageSnippet: View {
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
     let localized = NSLocalizedString("language", comment: "")
     let preferredLanguage = NSLocale.preferredLanguages[0]
-    print(isRTL, kind, withCurrencyInArabic, localized, preferredLanguage, Locale.current.identifier , Locale.current.regionCode)
-    let textNode1 = kind == .common ? String(format: isRTL && withCurrencyInArabic ? "snippetArTitle1".localized : "snippetTitle1".localized) : String(format: "snippetTitle1EG".localized)
+    let textNode1 = kind == .common ? String(format: snippetTitle1) : String(format: snippetTitle1EG)
     let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
-    let textNode3 = kind == .common ? String(format: "snippetTitle2".localized) : String(format: "snippetTitle2EG".localized)
+    let textNode3 = kind == .common ? String(format: "snippetTitle2".localized) : String(format: snippetTitle2EG)
     
-    let learnMoreText = String(format: "learnMore".localized)
+    let learnMoreText = String(format: learnMore)
     
     return ZStack {
       VStack(alignment: .leading) {
