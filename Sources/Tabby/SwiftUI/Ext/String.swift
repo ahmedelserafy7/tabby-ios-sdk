@@ -10,14 +10,7 @@ import SwiftUI
 let TabbySdkBundle = Bundle.module
 
 public extension String {
-  
   var localized: String {
     NSLocalizedString(self, bundle: TabbySdkBundle, comment: "")
   }
-  
-  func isArabicWord()-> Bool{
-        let predicate = NSPredicate(format: "SELF MATCHES %@", "(?s).*\\p{Arabic}.*")
-                return predicate.evaluate(with: self)
-      
-    }
 }
