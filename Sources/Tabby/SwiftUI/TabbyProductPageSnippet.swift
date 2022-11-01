@@ -89,7 +89,7 @@ public struct TabbyProductPageSnippet: View {
           .stroke(borderColor, lineWidth: 1)
       )
       .padding(.horizontal, 16)
-      .environment(\.layoutDirection, isRTL ? .rightToLeft : .leftToRight)
+      .environment(\.layoutDirection, .rightToLeft)
       .onTapGesture {
         toggleOpen()
       }
