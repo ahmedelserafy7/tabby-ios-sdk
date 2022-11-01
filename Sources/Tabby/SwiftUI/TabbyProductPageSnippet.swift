@@ -29,9 +29,10 @@ public struct TabbyProductPageSnippet: View {
   var snippetTitle2 = ""
   var snippetTitle2EG = ""
   var learnMore = ""
+  var isRTL: Bool? = nil
   var urls: (String, String) = ("", "")
   
-  public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil) {
+  public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool? = nil) {
     self.amount = amount
     self.currency = currency
     self.snippetTitle1 = snippetTitle1 ?? ""
@@ -39,6 +40,7 @@ public struct TabbyProductPageSnippet: View {
     self.snippetTitle2 = snippetTitle2 ?? ""
     self.snippetTitle2EG = snippetTitle2EG ?? ""
     self.learnMore = learnMore ?? ""
+    self.isRTL = isRTL ?? ""
     self.withCurrencyInArabic = preferCurrencyInArabic ?? false
     let urlEn =  "\(webViewUrls[.en]!)?price=\(amount)&currency=\(currency.rawValue)"
     let urlAr =  "\(webViewUrls[.ar]!)?price=\(amount)&currency=\(currency.rawValue)"
@@ -46,7 +48,6 @@ public struct TabbyProductPageSnippet: View {
   }
   
   public var body: some View {
-    let isRTL = direction == .rightToLeft
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
     let textNode1 = kind == .common ? String(format: snippetTitle1) : String(format: snippetTitle1EG)
     let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((amount/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
@@ -89,7 +90,7 @@ public struct TabbyProductPageSnippet: View {
           .stroke(borderColor, lineWidth: 1)
       )
       .padding(.horizontal, 16)
-      .environment(\.layoutDirection, .rightToLeft)
+      .environment(\.layoutDirection, isRTL ? .rightToLeft : .leftToRight)
       .onTapGesture {
         toggleOpen()
       }
