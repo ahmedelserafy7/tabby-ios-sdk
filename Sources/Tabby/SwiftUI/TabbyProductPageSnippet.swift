@@ -21,7 +21,7 @@ public struct TabbyProductPageSnippet: View {
     isOpened.toggle()
   }
   
-  var amount: Double? = 0
+  var amount: Double
   let currency: Currency
   let withCurrencyInArabic: Bool
   var snippetTitle1 = ""
@@ -32,7 +32,7 @@ public struct TabbyProductPageSnippet: View {
   var isRTL = Bool()
   var urls: (String, String) = ("", "")
   
-  public init(amount: Double? = nil, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool = true) {
+  public init(amount: Double, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool = true) {
     self.amount = amount
     self.currency = currency
     self.snippetTitle1 = snippetTitle1 ?? ""
@@ -50,7 +50,7 @@ public struct TabbyProductPageSnippet: View {
   public var body: some View {
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
     let textNode1 = kind == .common ? String(format: snippetTitle1) : String(format: snippetTitle1EG)
-    let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\(((amount ?? 0)/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\(((amount ?? 0)/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
+    let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\(((amount)/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\(((amount)/4).withFormattedAmount)", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
     let textNode3 = kind == .common ? String(format: snippetTitle2) : String(format: snippetTitle2EG)
     
     let learnMoreText = String(format: learnMore)
