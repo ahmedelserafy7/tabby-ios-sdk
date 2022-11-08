@@ -50,8 +50,7 @@ public struct TabbyProductPageSnippet: View {
   public var body: some View {
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
     let textNode1 = kind == .common ? String(format: snippetTitle1) : String(format: snippetTitle1EG)
-    let amountInString = String(((amount ?? 0)/4).withFormattedAmount) ?? ""
-    let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\((amountInString))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((amountInString))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
+   // let textNode2 = kind == .common ? String(format: "snippetAmount".localized, "\((((amount/4).withFormattedAmount)))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((((amount/4).withFormattedAmount)))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
     let textNode3 = kind == .common ? String(format: snippetTitle2) : String(format: snippetTitle2EG)
     
     let learnMoreText = String(format: learnMore)
@@ -63,7 +62,7 @@ public struct TabbyProductPageSnippet: View {
             Text(textNode1)
               .foregroundColor(textPrimaryColor)
               .font(.system(size: 14))
-            + Text(textNode2)
+            + Text()
               .foregroundColor(textPrimaryColor)
               .font(.system(size: 14, weight: .bold))
             + Text(textNode3)
