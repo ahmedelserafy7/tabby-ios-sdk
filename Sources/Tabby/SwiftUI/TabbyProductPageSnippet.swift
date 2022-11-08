@@ -21,7 +21,7 @@ public struct TabbyProductPageSnippet: View {
     isOpened.toggle()
   }
   
-  let amount: Double? = 0
+  let amount: Double = 0
   let currency: Currency
   let withCurrencyInArabic: Bool
   var snippetTitle1 = ""
