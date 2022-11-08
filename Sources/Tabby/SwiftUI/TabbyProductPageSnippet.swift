@@ -62,7 +62,7 @@ public struct TabbyProductPageSnippet: View {
             Text(textNode1)
               .foregroundColor(textPrimaryColor)
               .font(.system(size: 14))
-            + Text()
+            //+ Text()
               .foregroundColor(textPrimaryColor)
               .font(.system(size: 14, weight: .bold))
             + Text(textNode3)
