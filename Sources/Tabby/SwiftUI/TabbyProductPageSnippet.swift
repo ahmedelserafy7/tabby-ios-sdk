@@ -21,7 +21,7 @@ public struct TabbyProductPageSnippet: View {
     isOpened.toggle()
   }
   
-  let amount: Double = 0
+  let amount: Double? = 0
   let currency: Currency
   let withCurrencyInArabic: Bool
   var snippetTitle1 = ""
@@ -33,7 +33,7 @@ public struct TabbyProductPageSnippet: View {
   var urls: (String, String) = ("", "")
   
   public init(amount: Double? = nil, currency: Currency, snippetTitle1: String? = nil, snippetTitle1EG: String? = nil, snippetTitle2: String? = nil, snippetTitle2EG: String? = nil, learnMore: String? = nil, preferCurrencyInArabic: Bool? = nil, isRTL: Bool = true) {
-    self.amount = amount ?? nil
+    self.amount = amount
     self.currency = currency
     self.snippetTitle1 = snippetTitle1 ?? ""
     self.snippetTitle1EG = snippetTitle1EG ?? ""
