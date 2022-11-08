@@ -51,7 +51,7 @@ public struct TabbyProductPageSnippet: View {
     let kind: SnippetKind = currency == .EGP ? .egypt : .common
     let textNode1 = kind == .common ? String(format: snippetTitle1) : String(format: snippetTitle1EG)
     var textNode2: String = "" 
-    textNode2 = amount == nil ?  "" : kind == .common ? String(format: "snippetAmount".localized, "\((((amount/4).withFormattedAmount)))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((((amount/4).withFormattedAmount)))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
+    textNode2 = amount == nil ?  "" : kind == .common ? String(format: "snippetAmount".localized, "\((((amount!/4).withFormattedAmount)))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))") : String(format: "snippetAmountEG".localized, "\((((amount!/4).withFormattedAmount)))", "\(currency.localized(l: withCurrencyInArabic && isRTL ? .ar : nil))")
     let textNode3 = kind == .common ? String(format: snippetTitle2) : String(format: snippetTitle2EG)
     
     let learnMoreText = String(format: learnMore)
